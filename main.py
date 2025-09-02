@@ -7,13 +7,16 @@ if __name__ == '__main__':
         user_input = input('Please enter p to play or t to test => ')
     
     if user_input == "p":    
-        from game import snowman, SNOWMAN_MIN_WORD_LENGTH, SNOWMAN_MAX_WORD_LENGTH
+        from game import snowman, SNOWMAN_MIN_WORD_LENGTH, SNOWMAN_MAX_WORD_LENGTH, play_again
         from wonderwords import RandomWord
 
         random_word_generator = RandomWord()
         snowman_word = random_word_generator.word(word_min_length=SNOWMAN_MIN_WORD_LENGTH, word_max_length=SNOWMAN_MAX_WORD_LENGTH)
 
-        snowman(snowman_word)
+        while True:
+            snowman(snowman_word)
+            if not play_again():
+                break  
     else: 
       from game_test import *
       unittest.main(exit=False)
